@@ -5,19 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./style.css" />
 
+    <meta property="og:image" content="https://s3.ap-northeast-2.amazonaws.com/mabu.newscloud.sbs.co.kr/electionquiz/img/thumb2.jpg" />
+    <meta property="og:url"                content="http://mabu.newscloud.sbs.co.kr/electionquiz/index.html" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="[2020총선]모여봐요, 비례의 숲" />
+    <meta property="og:description"        content="내 이상형 후보, 넌 어딨니? 테스트를 통해 알아보자!" />
+
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <link rel="shortcut icon" href="favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <title>모여봐요, 비례대표의 숲</title>
+    <script type="text/javascript">
+        // F12 버튼 방지
+        $(document).ready(function(){
+            $(document).bind('keydown',function(e){
+                if ( e.keyCode == 123 /* F12 */) {
+                    e.preventDefault();
+                    e.returnValue = false;
+                }
+            });
+        });
+        
+        // 우측 클릭 방지
+        document.onmousedown=disableclick;
+        status="Right click is not available.";
+        
+        function disableclick(event){
+            if (event.button==2) {
+                alert(status);
+                return false;
+            }
+        }
+    </script>
+    
+    <title>[2020총선] 모여봐요, 비례의 숲</title>
 </head>
-<body>
+<body oncontextmenu='return false' onselectstart='return false' ondragstart='return false'>
     <div class="container">
         
         <!-- 헤더 -->
-        <div class="headerarea">
+        <div class="headerarea" id="header">
             <header>
                 <a href=""> <img src="./img/logo.svg" id="sbslogo"> </a>
                 <a id="kakao-link-btn" href="javascript:sendLink()">
@@ -28,15 +57,21 @@
         </div>
         
         <div id="startScreen" >
-            <img src="./img/man1.png" alt="">
+            <img src="./img/cover2.png" alt="" class="start-cover">
             <h1 class="start-h1">모여봐요<br> 비례의 숲</h1>
+            <p class="start-subtitle">
+                내 이상형 후보는 어디 있을까?
+            </p>
             <p class="start-p" > 
-                내 이상형 비례대표를 찾아서<br><br>
-                다들 낼 모레 선거때 <br>어떤 비례대표 정당을 투표할지 고민하고 있지? <br>
-                우리가 만든 이 테스트를 하면 <br> 어디를 지지할지 더 명확해질거야. <br> 
+                이번 총선, 비례대표 뽑아야지?<br>
+                그런데 정당이 무려 35개나 된대<br>
+                어느 당에 투표할 지 당연히 고민되겠지?<br>
+                이거 해보면 확실해질거야! <br>
                 지금 바로 GO! GO!
             </p>
             <button id="start-btn">시작하기</button>
+            <button id="credit-btn">만든 사람들</button>
+
             <div class="footdiv"> </div>
         </div>
 
